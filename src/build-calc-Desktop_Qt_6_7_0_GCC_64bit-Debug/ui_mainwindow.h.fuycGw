@@ -1,0 +1,361 @@
+/********************************************************************************
+** Form generated from reading UI file 'mainwindow.ui'
+**
+** Created by: Qt User Interface Compiler version 6.7.0
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
+
+#include <QtCore/QVariant>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
+#include "qcustomplot.h"
+
+QT_BEGIN_NAMESPACE
+
+class Ui_MainWindow
+{
+public:
+    QWidget *centralwidget;
+    QLabel *le_entry;
+    QPushButton *btn_LBR;
+    QPushButton *btn_RBR;
+    QPushButton *pushButton_exp;
+    QPushButton *pushButton_div;
+    QPushButton *pushButton_7;
+    QPushButton *pushButton_8;
+    QPushButton *btn_9;
+    QPushButton *pushButton_mult;
+    QPushButton *btn_4;
+    QPushButton *btn_5;
+    QPushButton *bttn_6;
+    QPushButton *pushButton_minus;
+    QPushButton *btn_1;
+    QPushButton *btn_2;
+    QPushButton *btn_3;
+    QPushButton *pushButton_plus;
+    QPushButton *btn_sin;
+    QPushButton *pushButton_asin;
+    QPushButton *pushButton_cos;
+    QPushButton *pushButton_acos;
+    QPushButton *pushButton_log;
+    QPushButton *pushButton_ln;
+    QPushButton *pushButton_tan;
+    QPushButton *pushButton_atan;
+    QPushButton *pushButton_dot;
+    QPushButton *pushButton_equal;
+    QPushButton *btn_0;
+    QPushButton *pushButton_mod;
+    QPushButton *pushButton_sqrt;
+    QPushButton *btn_AC;
+    QPushButton *btn_CE;
+    QCustomPlot *customPlot;
+    QPushButton *btn_x;
+    QPushButton *pushButton_graph;
+    QPushButton *pushButton_credit;
+    QDoubleSpinBox *doubleSpinBox_x;
+
+    void setupUi(QMainWindow *MainWindow)
+    {
+        if (MainWindow->objectName().isEmpty())
+            MainWindow->setObjectName("MainWindow");
+        MainWindow->resize(915, 400);
+        MainWindow->setMinimumSize(QSize(915, 400));
+        MainWindow->setMaximumSize(QSize(915, 400));
+        centralwidget = new QWidget(MainWindow);
+        centralwidget->setObjectName("centralwidget");
+        le_entry = new QLabel(centralwidget);
+        le_entry->setObjectName("le_entry");
+        le_entry->setGeometry(QRect(10, 10, 270, 60));
+        QFont font;
+        le_entry->setFont(font);
+        le_entry->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"color: black;\n"
+" background-color: white;\n"
+"border: 1px solid black;\n"
+"font-size: 16px;\n"
+"}"));
+        le_entry->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        btn_LBR = new QPushButton(centralwidget);
+        btn_LBR->setObjectName("btn_LBR");
+        btn_LBR->setGeometry(QRect(10, 90, 60, 60));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::MinimumExpanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(btn_LBR->sizePolicy().hasHeightForWidth());
+        btn_LBR->setSizePolicy(sizePolicy);
+        QFont font1;
+        font1.setPointSize(15);
+        btn_LBR->setFont(font1);
+        btn_RBR = new QPushButton(centralwidget);
+        btn_RBR->setObjectName("btn_RBR");
+        btn_RBR->setGeometry(QRect(80, 90, 60, 60));
+        sizePolicy.setHeightForWidth(btn_RBR->sizePolicy().hasHeightForWidth());
+        btn_RBR->setSizePolicy(sizePolicy);
+        btn_RBR->setFont(font1);
+        pushButton_exp = new QPushButton(centralwidget);
+        pushButton_exp->setObjectName("pushButton_exp");
+        pushButton_exp->setGeometry(QRect(150, 90, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_exp->sizePolicy().hasHeightForWidth());
+        pushButton_exp->setSizePolicy(sizePolicy);
+        pushButton_exp->setFont(font1);
+        pushButton_div = new QPushButton(centralwidget);
+        pushButton_div->setObjectName("pushButton_div");
+        pushButton_div->setGeometry(QRect(220, 90, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_div->sizePolicy().hasHeightForWidth());
+        pushButton_div->setSizePolicy(sizePolicy);
+        pushButton_div->setFont(font1);
+        pushButton_7 = new QPushButton(centralwidget);
+        pushButton_7->setObjectName("pushButton_7");
+        pushButton_7->setGeometry(QRect(10, 150, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
+        pushButton_7->setSizePolicy(sizePolicy);
+        pushButton_7->setFont(font1);
+        pushButton_8 = new QPushButton(centralwidget);
+        pushButton_8->setObjectName("pushButton_8");
+        pushButton_8->setGeometry(QRect(80, 150, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
+        pushButton_8->setSizePolicy(sizePolicy);
+        pushButton_8->setFont(font1);
+        btn_9 = new QPushButton(centralwidget);
+        btn_9->setObjectName("btn_9");
+        btn_9->setGeometry(QRect(150, 150, 60, 60));
+        sizePolicy.setHeightForWidth(btn_9->sizePolicy().hasHeightForWidth());
+        btn_9->setSizePolicy(sizePolicy);
+        btn_9->setFont(font1);
+        pushButton_mult = new QPushButton(centralwidget);
+        pushButton_mult->setObjectName("pushButton_mult");
+        pushButton_mult->setGeometry(QRect(220, 150, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_mult->sizePolicy().hasHeightForWidth());
+        pushButton_mult->setSizePolicy(sizePolicy);
+        pushButton_mult->setFont(font1);
+        btn_4 = new QPushButton(centralwidget);
+        btn_4->setObjectName("btn_4");
+        btn_4->setGeometry(QRect(10, 210, 60, 60));
+        sizePolicy.setHeightForWidth(btn_4->sizePolicy().hasHeightForWidth());
+        btn_4->setSizePolicy(sizePolicy);
+        btn_4->setFont(font1);
+        btn_5 = new QPushButton(centralwidget);
+        btn_5->setObjectName("pushButton_5");
+        btn_5->setGeometry(QRect(80, 210, 60, 60));
+        sizePolicy.setHeightForWidth(btn_5->sizePolicy().hasHeightForWidth());
+        btn_5->setSizePolicy(sizePolicy);
+        btn_5->setFont(font1);
+        bttn_6 = new QPushButton(centralwidget);
+        bttn_6->setObjectName("pushButton_6");
+        bttn_6->setGeometry(QRect(150, 210, 60, 60));
+        sizePolicy.setHeightForWidth(bttn_6->sizePolicy().hasHeightForWidth());
+        bttn_6->setSizePolicy(sizePolicy);
+        bttn_6->setFont(font1);
+        pushButton_minus = new QPushButton(centralwidget);
+        pushButton_minus->setObjectName("pushButton_minus");
+        pushButton_minus->setGeometry(QRect(220, 210, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_minus->sizePolicy().hasHeightForWidth());
+        pushButton_minus->setSizePolicy(sizePolicy);
+        pushButton_minus->setFont(font1);
+        btn_1 = new QPushButton(centralwidget);
+        btn_1->setObjectName("btn_1");
+        btn_1->setGeometry(QRect(10, 270, 60, 60));
+        sizePolicy.setHeightForWidth(btn_1->sizePolicy().hasHeightForWidth());
+        btn_1->setSizePolicy(sizePolicy);
+        btn_1->setFont(font1);
+        btn_2 = new QPushButton(centralwidget);
+        btn_2->setObjectName("btn_2");
+        btn_2->setGeometry(QRect(80, 270, 60, 60));
+        sizePolicy.setHeightForWidth(btn_2->sizePolicy().hasHeightForWidth());
+        btn_2->setSizePolicy(sizePolicy);
+        btn_2->setFont(font1);
+        btn_3 = new QPushButton(centralwidget);
+        btn_3->setObjectName("btn_3");
+        btn_3->setGeometry(QRect(150, 270, 60, 60));
+        sizePolicy.setHeightForWidth(btn_3->sizePolicy().hasHeightForWidth());
+        btn_3->setSizePolicy(sizePolicy);
+        btn_3->setFont(font1);
+        pushButton_plus = new QPushButton(centralwidget);
+        pushButton_plus->setObjectName("pushButton_plus");
+        pushButton_plus->setGeometry(QRect(220, 270, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_plus->sizePolicy().hasHeightForWidth());
+        pushButton_plus->setSizePolicy(sizePolicy);
+        pushButton_plus->setFont(font1);
+        btn_sin = new QPushButton(centralwidget);
+        btn_sin->setObjectName("btn_sin");
+        btn_sin->setGeometry(QRect(320, 90, 60, 60));
+        sizePolicy.setHeightForWidth(btn_sin->sizePolicy().hasHeightForWidth());
+        btn_sin->setSizePolicy(sizePolicy);
+        btn_sin->setFont(font1);
+        pushButton_asin = new QPushButton(centralwidget);
+        pushButton_asin->setObjectName("pushButton_asin");
+        pushButton_asin->setGeometry(QRect(390, 90, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_asin->sizePolicy().hasHeightForWidth());
+        pushButton_asin->setSizePolicy(sizePolicy);
+        pushButton_asin->setFont(font1);
+        pushButton_cos = new QPushButton(centralwidget);
+        pushButton_cos->setObjectName("pushButton_cos");
+        pushButton_cos->setGeometry(QRect(320, 150, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_cos->sizePolicy().hasHeightForWidth());
+        pushButton_cos->setSizePolicy(sizePolicy);
+        pushButton_cos->setFont(font1);
+        pushButton_acos = new QPushButton(centralwidget);
+        pushButton_acos->setObjectName("pushButton_acos");
+        pushButton_acos->setGeometry(QRect(390, 150, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_acos->sizePolicy().hasHeightForWidth());
+        pushButton_acos->setSizePolicy(sizePolicy);
+        pushButton_acos->setFont(font1);
+        pushButton_log = new QPushButton(centralwidget);
+        pushButton_log->setObjectName("pushButton_log");
+        pushButton_log->setGeometry(QRect(320, 270, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_log->sizePolicy().hasHeightForWidth());
+        pushButton_log->setSizePolicy(sizePolicy);
+        pushButton_log->setFont(font1);
+        pushButton_ln = new QPushButton(centralwidget);
+        pushButton_ln->setObjectName("pushButton_ln");
+        pushButton_ln->setGeometry(QRect(390, 270, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_ln->sizePolicy().hasHeightForWidth());
+        pushButton_ln->setSizePolicy(sizePolicy);
+        pushButton_ln->setFont(font1);
+        pushButton_tan = new QPushButton(centralwidget);
+        pushButton_tan->setObjectName("pushButton_tan");
+        pushButton_tan->setGeometry(QRect(320, 210, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_tan->sizePolicy().hasHeightForWidth());
+        pushButton_tan->setSizePolicy(sizePolicy);
+        pushButton_tan->setFont(font1);
+        pushButton_atan = new QPushButton(centralwidget);
+        pushButton_atan->setObjectName("pushButton_atan");
+        pushButton_atan->setGeometry(QRect(390, 210, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_atan->sizePolicy().hasHeightForWidth());
+        pushButton_atan->setSizePolicy(sizePolicy);
+        pushButton_atan->setFont(font1);
+        pushButton_dot = new QPushButton(centralwidget);
+        pushButton_dot->setObjectName("pushButton_dot");
+        pushButton_dot->setGeometry(QRect(150, 330, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_dot->sizePolicy().hasHeightForWidth());
+        pushButton_dot->setSizePolicy(sizePolicy);
+        pushButton_dot->setFont(font1);
+        pushButton_equal = new QPushButton(centralwidget);
+        pushButton_equal->setObjectName("pushButton_equal");
+        pushButton_equal->setGeometry(QRect(220, 330, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_equal->sizePolicy().hasHeightForWidth());
+        pushButton_equal->setSizePolicy(sizePolicy);
+        pushButton_equal->setFont(font1);
+        btn_0 = new QPushButton(centralwidget);
+        btn_0->setObjectName("btn_0");
+        btn_0->setGeometry(QRect(10, 330, 131, 60));
+        sizePolicy.setHeightForWidth(btn_0->sizePolicy().hasHeightForWidth());
+        btn_0->setSizePolicy(sizePolicy);
+        btn_0->setFont(font1);
+        pushButton_mod = new QPushButton(centralwidget);
+        pushButton_mod->setObjectName("pushButton_mod");
+        pushButton_mod->setGeometry(QRect(390, 330, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_mod->sizePolicy().hasHeightForWidth());
+        pushButton_mod->setSizePolicy(sizePolicy);
+        pushButton_mod->setFont(font1);
+        pushButton_sqrt = new QPushButton(centralwidget);
+        pushButton_sqrt->setObjectName("pushButton_sqrt");
+        pushButton_sqrt->setGeometry(QRect(320, 330, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_sqrt->sizePolicy().hasHeightForWidth());
+        pushButton_sqrt->setSizePolicy(sizePolicy);
+        pushButton_sqrt->setFont(font1);
+        btn_AC = new QPushButton(centralwidget);
+        btn_AC->setObjectName("btn_AC");
+        btn_AC->setGeometry(QRect(320, 10, 60, 60));
+        sizePolicy.setHeightForWidth(btn_AC->sizePolicy().hasHeightForWidth());
+        btn_AC->setSizePolicy(sizePolicy);
+        btn_AC->setFont(font1);
+        btn_CE = new QPushButton(centralwidget);
+        btn_CE->setObjectName("btn_CE");
+        btn_CE->setGeometry(QRect(390, 10, 60, 60));
+        sizePolicy.setHeightForWidth(btn_CE->sizePolicy().hasHeightForWidth());
+        btn_CE->setSizePolicy(sizePolicy);
+        btn_CE->setFont(font1);
+        customPlot = new QCustomPlot(centralwidget);
+        customPlot->setObjectName("customPlot");
+        customPlot->setGeometry(QRect(470, 20, 431, 301));
+        customPlot->setFont(font1);
+        btn_x = new QPushButton(centralwidget);
+        btn_x->setObjectName("btn_x");
+        btn_x->setGeometry(QRect(470, 330, 60, 60));
+        sizePolicy.setHeightForWidth(btn_x->sizePolicy().hasHeightForWidth());
+        btn_x->setSizePolicy(sizePolicy);
+        btn_x->setFont(font1);
+        pushButton_graph = new QPushButton(centralwidget);
+        pushButton_graph->setObjectName("pushButton_graph");
+        pushButton_graph->setGeometry(QRect(720, 330, 60, 60));
+        sizePolicy.setHeightForWidth(pushButton_graph->sizePolicy().hasHeightForWidth());
+        pushButton_graph->setSizePolicy(sizePolicy);
+        pushButton_graph->setFont(font1);
+        pushButton_credit = new QPushButton(centralwidget);
+        pushButton_credit->setObjectName("pushButton_credit");
+        pushButton_credit->setGeometry(QRect(790, 330, 110, 60));
+        sizePolicy.setHeightForWidth(pushButton_credit->sizePolicy().hasHeightForWidth());
+        pushButton_credit->setSizePolicy(sizePolicy);
+        pushButton_credit->setFont(font1);
+        doubleSpinBox_x = new QDoubleSpinBox(centralwidget);
+        doubleSpinBox_x->setObjectName("doubleSpinBox_x");
+        doubleSpinBox_x->setGeometry(QRect(550, 330, 140, 60));
+        doubleSpinBox_x->setFont(font1);
+        doubleSpinBox_x->setDecimals(5);
+        doubleSpinBox_x->setMinimum(-1000000.000000000000000);
+        doubleSpinBox_x->setMaximum(1000000.000000000000000);
+        MainWindow->setCentralWidget(centralwidget);
+
+        retranslateUi(MainWindow);
+
+        QMetaObject::connectSlotsByName(MainWindow);
+    } // setupUi
+
+    void retranslateUi(QMainWindow *MainWindow)
+    {
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        le_entry->setText(QString());
+        btn_LBR->setText(QCoreApplication::translate("MainWindow", "(", nullptr));
+        btn_RBR->setText(QCoreApplication::translate("MainWindow", ")", nullptr));
+        pushButton_exp->setText(QCoreApplication::translate("MainWindow", "^", nullptr));
+        pushButton_div->setText(QCoreApplication::translate("MainWindow", "/", nullptr));
+        pushButton_7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
+        pushButton_8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
+        btn_9->setText(QCoreApplication::translate("MainWindow", "9", nullptr));
+        pushButton_mult->setText(QCoreApplication::translate("MainWindow", "*", nullptr));
+        btn_4->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
+        btn_5->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
+        bttn_6->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
+        pushButton_minus->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        btn_1->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
+        btn_2->setText(QCoreApplication::translate("MainWindow", "2", nullptr));
+        btn_3->setText(QCoreApplication::translate("MainWindow", "3", nullptr));
+        pushButton_plus->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        btn_sin->setText(QCoreApplication::translate("MainWindow", "sin", nullptr));
+        pushButton_asin->setText(QCoreApplication::translate("MainWindow", "asin", nullptr));
+        pushButton_cos->setText(QCoreApplication::translate("MainWindow", "cos", nullptr));
+        pushButton_acos->setText(QCoreApplication::translate("MainWindow", "acos", nullptr));
+        pushButton_log->setText(QCoreApplication::translate("MainWindow", "log", nullptr));
+        pushButton_ln->setText(QCoreApplication::translate("MainWindow", "ln", nullptr));
+        pushButton_tan->setText(QCoreApplication::translate("MainWindow", "tan", nullptr));
+        pushButton_atan->setText(QCoreApplication::translate("MainWindow", "atan", nullptr));
+        pushButton_dot->setText(QCoreApplication::translate("MainWindow", ".", nullptr));
+        pushButton_equal->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
+        btn_0->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        pushButton_mod->setText(QCoreApplication::translate("MainWindow", "mod", nullptr));
+        pushButton_sqrt->setText(QCoreApplication::translate("MainWindow", "sqrt", nullptr));
+        btn_AC->setText(QCoreApplication::translate("MainWindow", "AC", nullptr));
+        btn_CE->setText(QCoreApplication::translate("MainWindow", "CE", nullptr));
+        btn_x->setText(QCoreApplication::translate("MainWindow", "x", nullptr));
+        pushButton_graph->setText(QCoreApplication::translate("MainWindow", "Graph", nullptr));
+        pushButton_credit->setText(QCoreApplication::translate("MainWindow", "Credit", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class MainWindow: public Ui_MainWindow {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_MAINWINDOW_H

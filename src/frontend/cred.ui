@@ -300,6 +300,9 @@ border: 1px solid black;
 font-size: 16px;
 }</string>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="btn_back">
     <property name="geometry">

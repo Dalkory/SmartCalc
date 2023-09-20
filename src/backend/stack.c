@@ -1,27 +1,41 @@
 #include "calc.h"
 
-void initStack(Stack* stack) { stack->top = NULL; }
-
-int push(Stack* list, Lexeme addLexeme) {
-  int status = OK;
-  Node* newNode = malloc(sizeof(Node));
-  if (newNode != NULL) {
-    newNode->lexeme = addLexeme;
-    newNode->next = list->top;
-    list->top = newNode;
-  } else {
-    status = MEMORY_ERROR;
-  }
-  return status;
+// Инициализация стека
+void initStack(Stack* stack) {
+  stack->top = NULL;  // Установка указателя верхнего элемента стека в NULL,
+                      // обозначая пустой стек
 }
 
-double pop(Stack* stack) {
-  double rtn = 0.;
-  if (stack->top != NULL) {
-    rtn = stack->top->lexeme.value;
-    Node* temp = stack->top;
-    stack->top = stack->top->next;
-    free(temp);
+// Добавление элемента в стек
+int push(Stack* stack, Lexeme addLexeme) {
+  int status = OK;  // Статус операции добавления элемента в стек
+  Node* newNode = malloc(sizeof(Node));  // Выделение памяти под новый узел
+  if (newNode != NULL) {
+    newNode->lexeme = addLexeme;  // Присваивание переданной лексемы новому узлу
+    newNode->next = stack->top;  // Установка следующего элемента нового узла на
+                                 // текущий верхний элемент стека
+    stack->top = newNode;  // Обновление верхнего элемента стека на новый узел
+  } else {
+    status = MEMORY_ERROR;  // Если не удалось выделить память, устанавливаем
+                            // статус ошибки
+    // Здесь можно добавить обработку ошибки, например, вывод сообщения или
+    // логирование
   }
-  return rtn;
+  return status;  // Возвращаем статус операции добавления элемента в стек
+}
+
+// Извлечение элемента из стека
+double pop(Stack* stack) {
+  double rtn = 0.0;  // Значение, которое будет возвращено (по умолчанию 0.0)
+  if (stack->top != NULL) {  // Проверка на наличие элементов в стеке
+    rtn = stack->top->lexeme
+              .value;  // Получение значения лексемы из верхнего элемента стека
+    Node* temp = stack->top;  // Временная переменная для хранения указателя на
+                              // верхний элемент стека
+    stack->top =
+        stack->top
+            ->next;  // Обновление верхнего элемента стека на следующий элемент
+    free(temp);  // Освобождение памяти, ранее занимаемой верхним элементом
+  }
+  return rtn;  // Возвращение извлеченного значения
 }

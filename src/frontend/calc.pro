@@ -20,7 +20,7 @@ SOURCES += \
     ../backend/credit.c
 
 HEADERS += \
-    ../backend/parser.h \
+    ../backend/credit.h \
     cred.h \
     mainwindow.h \
     qcustomplot.h \

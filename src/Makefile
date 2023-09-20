@@ -50,7 +50,7 @@ dist:
 	@cd dist && rm -rf *.c *.cpp *.h *.ui calc* dvi.md Makefile
 	@rm -rf calculator
 
-test:
+test: clean
 	@$(CC) $(FLAGS) $(SRC) $(SRC_TEST) -o test.out $(ADD_LIB)
 	@./test.out
 
@@ -60,6 +60,10 @@ gcov_report:
 	@lcov -t "test" -o test.info -c -d ./
 	@genhtml test.info -o report
 	@$(OPEN_CMD) report/index.html
+
+valgrind:
+	@$(CC) $(FLAGS) $(SRC) $(SRC_TEST) -o test.out $(ADD_LIB)
+	@valgrind --trace-children=yes --track-fds=yes --track-origins=yes -s --leak-check=full --show-leak-kinds=all ./test.out
 
 clean:
 	@rm -rf *.o backend/*.o *.a *.out *.gcno *.gcda *.info *.gch test.dSYM report gcov_report build* logs

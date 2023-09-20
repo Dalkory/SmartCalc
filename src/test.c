@@ -1,6 +1,7 @@
 #include <check.h>
 
 #include "backend/calc.h"
+#include "backend/credit.h"
 
 START_TEST(smartCalc_test_1) {
   double res = 0.0;
@@ -346,13 +347,434 @@ START_TEST(smartCalc_test_33) {
 }
 END_TEST
 
-START_TEST(smartCalc_test_34) {
-char* str = "1.556+2.343";
-double res = 0;
-int check = from_answer(str, &res, 0);
+START_TEST(polish_calc_1) {
+  char input[255] = "2+2*2";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  // from_answer(input,1, x_value, &error);
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(2 + 2 * 2, result, 1e-7);
+}
+END_TEST
 
-ck_assert_double_eq(res, 3.899);
-ck_assert_int_eq(check, OK);
+START_TEST(polish_calc_2) {
+  char input[255] = "cos(30)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(cos(30), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_3) {
+  char input[255] = "sin(30)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(sin(30), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_4) {
+    char input[255] = "tan(30";
+    double result = 0, x_value = 0.0;
+    int error = 0;
+    error = from_answer(input, &result, x_value);
+    ck_assert_int_eq(3, error);
+}
+END_TEST
+
+START_TEST(polish_calc_5) {
+  char input[255] = "acos(0.5)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(acos(0.5), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_6) {
+  char input[255] = "asin(0.3)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(asin(0.3), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_7) {
+  char input[255] = "atan(-0.3)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(atan(-0.3), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_8) {
+  char input[255] = "sqrt(0.7)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(sqrt(0.7), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_9) {
+  char input[255] = "ln(30)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(log(30), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_10) {
+  char input[255] = "log(30)";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(log10(30), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_11) {
+  char input[255] = "2+7";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(2 + 7, result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_12) {
+  char input[255] = "9146-5752";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(9146 - 5752, result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_13) {
+  char input[255] = "3*(5*x+5)+1";
+  double result = 0;
+  double x_value = 4;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(3 * (5 * 4 + 5) + 1, result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_14) {
+  char input[255] = "4*(2*x+2)+5*(3*x-5)";
+  double result = 0;
+  double x_value = 3;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(4 * (2 * 3 + 2) + 5 * (3 * 3 - 5), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_15) {
+  char input[255] = "5^(ln(3))";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(pow(5, log(3)), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_16) {
+  char input[255] = "sin(5)*12";
+  double result = 0;
+  double x_value = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(sin(5) * 12, result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_17) {
+  char input[255] = "cos(x)^2+sin(x)^2";
+  double result = 0;
+  double x_value = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(pow(cos(7), 2) + pow(sin(7), 2), result, 1e-7);
+}
+END_TEST
+START_TEST(credit_ann) {
+  double percents, month, sum, percents_result, result, monthly_pay = 0;
+  percents = 40;
+  month = 400;
+  sum = 400;
+  credit_evualete_ann(percents, month, sum, &percents_result, &result, &monthly_pay);
+  ck_assert_double_lt(427.9240000, result);
+  ck_assert_double_lt(10.6981, monthly_pay);
+  ck_assert_double_lt(27.9244, percents_result);
+}
+END_TEST
+
+START_TEST(credit_dif) {
+    double percents = 40, month = 12, sum = 400, percents_result = 0, result = 0;
+    double monthly_pay[1024] = {0};
+    credit_evualete_diff(percents, month, sum, &percents_result, &result, monthly_pay);
+    ck_assert_double_lt(408.6720000, result);
+    ck_assert_double_lt(34.6484, monthly_pay[0]);
+    ck_assert_double_lt(33.4466, monthly_pay[11]);
+    ck_assert_double_lt(8.67215, percents_result);
+}
+END_TEST
+
+START_TEST(polish_calc_18) {
+  char input[255] = "sqrt(-1)";
+  double x_value = 7, result = 0;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_19) {
+  char input[255] = "4/0";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INF_RESULT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_50) {
+  char input[255] = "4/2+";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_55) {
+  char input[255] = "2m";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_54) {
+  char input[255] = "2+3cos";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_51) {
+  char input[255] = "2+3acos";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_52) {
+  char input[255] = "2+3ln";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_60) {
+  char input[255] = "2+3sqrt";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_56) {
+  char input[255] = "2+3log";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_57) {
+  char input[255] = "x4";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_58) {
+  char input[255] = ")2+3sqrt";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_59) {
+  char input[255] = ")(2+3sqrt";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(INCORRECT_INPUT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_20) {
+  char input[255] = "log(-1)";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(NAN_RESULT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_21) {
+  char input[255] = "ln(-1)";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(NAN_RESULT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_22) {
+  char input[255] = "asin(2)";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(NAN_RESULT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_23) {
+  char input[255] = "acos(3)";
+  double x_value = 0, result = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(NAN_RESULT, error);
+}
+END_TEST
+
+START_TEST(polish_calc_24) {
+  char input[255] = "asin(1)";
+  double result = 0;
+  double x_value = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(asin(1), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_25) {
+  char input[255] = "acos(1)";
+  double result = 0;
+  double x_value = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(acos(1), result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_26) {
+  char input[255] = "-48*12";
+  double result = 0;
+  double x_value = 7;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(-576 ,result, 1e-7);
+}
+END_TEST
+
+START_TEST(polish_calc_27) {
+  char input[255] = "5-(-5)";
+  double result = 0;
+  double x_value = 56;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(10, result, 1e-7);
+}
+END_TEST
+
+
+START_TEST(polish_calc_28) {
+  char input[255] = "10-23*(-27+1)";
+  double result = 0;
+  double x_value = 2;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(608, result, 1e-7);
+}
+END_TEST
+
+
+START_TEST(polish_calc_29) {
+  char input[255] = "5mod4";
+  double result = 0;
+  int error = 0;
+  error = from_answer(input, &result, 0);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(1, result, 1e-7);
+}
+END_TEST
+
+
+START_TEST(polish_calc_30) {
+  char input[255] = "(-2.2)-2.2";
+  double result = 0;
+  double x_value = 2;
+  int error = 0;
+  error = from_answer(input, &result, x_value);
+  ck_assert_int_eq(0, error);
+  ck_assert_double_eq_tol(-4.4L, result, 1e-7);
 }
 END_TEST
 
@@ -395,7 +817,48 @@ Suite *s21_SmartCalc_suite() {
   tcase_add_test(tc, smartCalc_test_31);
   tcase_add_test(tc, smartCalc_test_32);
   tcase_add_test(tc, smartCalc_test_33);
-  tcase_add_test(tc, smartCalc_test_34);
+  tcase_add_test(tc, polish_calc_1);
+  tcase_add_test(tc, polish_calc_2);
+  tcase_add_test(tc, polish_calc_3);
+  tcase_add_test(tc, polish_calc_4);
+  tcase_add_test(tc, polish_calc_5);
+  tcase_add_test(tc, polish_calc_6);
+  tcase_add_test(tc, polish_calc_7);
+  tcase_add_test(tc, polish_calc_8);
+  tcase_add_test(tc, polish_calc_9);
+  tcase_add_test(tc, polish_calc_10);
+  tcase_add_test(tc, polish_calc_11);
+  tcase_add_test(tc, polish_calc_12);
+  tcase_add_test(tc, polish_calc_13);
+  tcase_add_test(tc, polish_calc_14);
+  tcase_add_test(tc, polish_calc_15);
+  tcase_add_test(tc, polish_calc_16);
+  tcase_add_test(tc, polish_calc_17);
+  tcase_add_test(tc, credit_ann);
+  tcase_add_test(tc, credit_dif);
+  tcase_add_test(tc, polish_calc_18);
+  tcase_add_test(tc, polish_calc_19);
+  tcase_add_test(tc, polish_calc_20);
+  tcase_add_test(tc, polish_calc_21);
+  tcase_add_test(tc, polish_calc_22);
+  tcase_add_test(tc, polish_calc_23);
+  tcase_add_test(tc, polish_calc_50);
+  tcase_add_test(tc, polish_calc_51);
+  tcase_add_test(tc, polish_calc_52);
+  tcase_add_test(tc, polish_calc_54);
+  tcase_add_test(tc, polish_calc_55);
+  tcase_add_test(tc, polish_calc_56);
+  tcase_add_test(tc, polish_calc_57);
+  tcase_add_test(tc, polish_calc_58);
+  tcase_add_test(tc, polish_calc_59);
+  tcase_add_test(tc, polish_calc_60);
+  tcase_add_test(tc, polish_calc_24);
+  tcase_add_test(tc, polish_calc_25);
+  tcase_add_test(tc, polish_calc_26);
+  tcase_add_test(tc, polish_calc_27);
+  tcase_add_test(tc, polish_calc_28);
+  tcase_add_test(tc, polish_calc_29);
+  tcase_add_test(tc, polish_calc_30);
 
   suite_add_tcase(s, tc);
 
